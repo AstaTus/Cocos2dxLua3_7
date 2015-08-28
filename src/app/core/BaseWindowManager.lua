@@ -2,10 +2,12 @@ local BaseWindowManager = class("BaseWindowManager")
 
 BaseWindowManager.singleton_ = nil
 BaseWindowManager.group_ = nil
-BaseWindowManager.window_classes_ = nil
+BaseWindowManager.window_classes_ = {}
+BaseWindowManager.window_instances_ = {}
 
 
 function BaseWindowManager:ctor()
+
 end
 
 

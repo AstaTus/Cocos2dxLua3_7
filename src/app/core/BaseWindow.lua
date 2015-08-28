@@ -1,24 +1,37 @@
 local BaseWindow = class("BaseWindow")
+
 BaseWindow.root_ = nil
+BaseWindow.sheet_ = nil
 
-function BaseWindow:ctor()
-
+function BaseWindow:ctor(sheet, winType, layer)
+    self.sheet_ = sheet
 end
 
+--在load之后调用
 function BaseWindow:init()
 
 end
 
 function BaseWindow:show()
-
+    if self.root_ ~= nil and self.sheet_ ~= nil and self.root_.getParent() ~= self.sheet_ then
+        self.sheet_.addChild(self.root_)
+    end
 end
 
 function BaseWindow:hide()
+    if self.root_ ~= nil and self.sheet_ ~= nil and self.root_.getParent() == self.sheet_ then
+        self.root_.removeSelf()
+    end
+end
+
+function BaseWindow:update(type, params)
 end
 
 
 
 function BaseWindow:load()
+    self.root_ = cc.CSLoader:createNode(self.__cname, "window/"..self.__cname)
+    self:init()
 end
 
 function BaseWindow:unload()
