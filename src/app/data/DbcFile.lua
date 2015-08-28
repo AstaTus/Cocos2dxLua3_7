@@ -12,7 +12,6 @@ DbcFile.data_ = nil
 
 function DbcFile:ctor()
     records_ = {}
-	data_ = DbcData.new()
 	records_num_ = 0;
 	fields_num_ = 0;
 end
@@ -47,29 +46,22 @@ function DbcFile:take(line, column)
 
 	local _nrecordsrum_ = 0;
 	local nfieldsnum_ = 0;
-	self.data_.ivalue_ = 0;
-	self.data_.pstring_ = "null";
-	self.data_.sstring_ = "";
-
 	--m_pdata为null值处理
 	if self.pdata_ == nil then
 		print "Get error : pdata_ is null "
 		return null;
 	end
 	
+    local value
     local i = records_[line * fields_num_ + column]
     while self.pdata_[i] ~= "\t" and self.pdata_[i] ~= "\n" do
         if self.pdata_[i] ~= "\r" then
-			self.data_.sstring_ = self.data_.sstring_ + self.pdata_[i]
+			value = value + self.pdata_[i]
         end
         i = i + 1
     end
-
-	self.data_.ivalue_ = int(data_.sstring_);
-	self.data_.pstring_ = data_.sstring_;
-	self.data_.fvalue_ = Number(data_.sstring_);
 			
-	return self.data_;
+	return value;
 end
 		
 function DbcFile:getRecordsNum()

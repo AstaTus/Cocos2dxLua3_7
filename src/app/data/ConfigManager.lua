@@ -1,8 +1,16 @@
+local DbcFile = require(".DbcFile")
+local ConfigEnum = require(".ConfigEnum")
+local WindowTemplete = require(".window.WindowTemplete")
+local WindowDataPool = require(".window.WindowDataPool")
+
+
 local ConfigManager = class("ConfigManager")
+
+
 
 ConfigManager.singleton_ = nil
 ConfigManager.parse_callbacks_ = nil
-
+ConfigManager.config_datas_ = nil
 
 function ConfigManager:ctor()
     self:initParseCallbacks()
@@ -29,6 +37,16 @@ function ConfigManager:initParseCallbacks()
 end
 
 function ConfigManager:parseWindowConfig()
+    local file = DbcFile.new()
+	file.openFromTxt(self.config_datas_[ConfigEnum.LoginWindow])
+
+    for i = 1, file.records_num_ do
+        local templete = WindowTemplete.new()
+        templete.id_ = file.take(i, 1)
+        templete.group_ = file.take(i, 2)
+        templete.name_ = file.take(i, 3)
+
+    end		
 end
 
 return ConfigManager

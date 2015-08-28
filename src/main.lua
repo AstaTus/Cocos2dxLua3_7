@@ -5,6 +5,8 @@ cc.FileUtils:getInstance():addSearchPath("res/")
 
 require "config"
 require "cocos.init"
+require "app.windows.init"
+require "app.data.init"
 
 local function main()
     require("app.MyApp"):create():run()
