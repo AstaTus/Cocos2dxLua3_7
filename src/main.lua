@@ -2,7 +2,7 @@
 cc.FileUtils:getInstance():setPopupNotify(false)
 cc.FileUtils:getInstance():addSearchPath("src/")
 cc.FileUtils:getInstance():addSearchPath("res/")
-
+cc.FileUtils:getInstance():addSearchPath("res/window/LoginWindow")
 require "config"
 require "cocos.init"
 require "app.windows.init"
