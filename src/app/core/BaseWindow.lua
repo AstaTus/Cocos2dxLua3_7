@@ -3,13 +3,15 @@ local WindowDef = import(".WindowDef")
 local BaseWindow = class("BaseWindow")
 
 BaseWindow.root_ = nil
-BaseWindow.sheet_ = nil
+BaseWindow.parent_ = nil
 BaseWindow.is_forever_exist_ = false --不会被卸载
 BaseWindow.load_state_ = WindowDef.UNLOAD
 
 function BaseWindow:ctor(sheet, winType, layer, forever)
-    self.sheet_ = sheet
+    self.parent_ = sheet:getChildByName(layer)
     self.is_forever_exist_ = forever
+
+
 end
 
 --在load之后调用
@@ -18,13 +20,13 @@ function BaseWindow:init()
 end
 
 function BaseWindow:show()
-    if self.root_ ~= nil and self.sheet_ ~= nil and self.root_.getParent() ~= self.sheet_ then
-        self.sheet_.addChild(self.root_)
+    if self.root_ ~= nil and self.parent_ ~= nil and self.root_.getParent() ~= self.parent_ then
+        self.parent_.addChild(self.root_)
     end
 end
 
 function BaseWindow:hide()
-    if self.root_ ~= nil and self.sheet_ ~= nil and self.root_.getParent() == self.sheet_ then
+    if self.root_ ~= nil and self.parent_ ~= nil and self.root_.getParent() == self.parent_ then
         self.root_.removeSelf()
     end
 end
@@ -53,9 +55,9 @@ function BaseWindow:seekNodeByName(node, name)
 		return node
     end
 
-	local nodes = root:getChildren();
-	for n in nodes do
-        local result = self:seekFromRootByName(n, name);
+	local nodes = node:getChildren()
+	for _, n in pairs(nodes) do
+        local result = self:seekNodeByName(n, name)
 		if result ~= nil then
             return result
         end
