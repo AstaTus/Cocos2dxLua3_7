@@ -46,6 +46,7 @@ function ConfigManager:parseWindowConfig()
         templete.group_ = file.take(i, 2)
         templete.name_ = file.take(i, 3)
 
+
     end		
 end
 

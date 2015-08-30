@@ -9,7 +9,7 @@ end
 
 --在load之后调用
 function BaseWindow:init()
-
+    
 end
 
 function BaseWindow:show()

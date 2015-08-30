@@ -2,7 +2,9 @@
 local MainScene = class("MainScene", cc.load("mvc").ViewBase)
 
 function MainScene:onCreate()
-   WindowManager:getSingleton():show(WindowEnum.LoginWindow)
+    WindowManager:getSingleton():resetScene(self)
+    WindowManager:getSingleton():loadWindows()
+    WindowManager:getSingleton():show(WindowEnum.LoginWindow)
 
 end
 

@@ -42,11 +42,27 @@ function BaseWindowManager:show(name)
 end
 
 function BaseWindowManager:hide(name)
-
+    local win = self.window_instances_[name]
+    if win  ~= nil then
+        win.hide()
+    end
 end
 
 function BaseWindowManager:loadWindows(group, interval_callback, over_callback)
+    local windows = WindowDataPool:getSingleton():getGroupWindows(group)
+    for i = 1, i < #windows do
+        local templete = windows[i]
+        if self.window_instances_[templete.name_]  == nil then
+            if self.window_classes_[templete.name_] ~= nil then
+                self.window_instances_[templete.name_] = self.window_classes_[templete.name_].new()
+            else
+                print("BaseWindowManager:loadWindows "..win.name_ .. " is not exist")
+                error()
+            end
+        end
 
+        self.window_instances_[templete.name_]:load()
+    end
 end
 
 function BaseWindowManager:unloadWindows(group, interval_callback, over_callback)
