@@ -20,14 +20,14 @@ function BaseWindow:init()
 end
 
 function BaseWindow:show()
-    if self.root_ ~= nil and self.parent_ ~= nil and self.root_.getParent() ~= self.parent_ then
-        self.parent_.addChild(self.root_)
+    if self.root_ ~= nil and self.parent_ ~= nil and self.root_:getParent() ~= self.parent_ then
+        self.parent_:addChild(self.root_)
     end
 end
 
 function BaseWindow:hide()
-    if self.root_ ~= nil and self.parent_ ~= nil and self.root_.getParent() == self.parent_ then
-        self.root_.removeSelf()
+    if self.root_ ~= nil and self.parent_ ~= nil and self.root_:getParent() == self.parent_ then
+        self.root_:removeSelf()
     end
 end
 
