@@ -17,8 +17,8 @@ function WindowDataPool:getSingleton()
 end
 
 function WindowDataPool:getGroupWindows(id)
-    if self.groups_[templete.name] ~= nil then
-        return self.groups_[templete.name]        
+    if self.groups_[id] ~= nil then
+        return self.groups_[id]        
     end
 
     return nil
@@ -29,7 +29,7 @@ function WindowDataPool:addWindowTemplete(templete)
 
     self.groups_[templete.group_] = self.groups_[templete.group_] or {}
     local group = self.groups_[templete.group_]
-    group[#group + 1] = templete.name_
+    group[#group + 1] = templete
 end
 
 return WindowDataPool

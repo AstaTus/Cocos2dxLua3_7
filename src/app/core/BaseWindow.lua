@@ -35,7 +35,7 @@ end
 
 
 function BaseWindow:load()
-    self.root_ = cc.CSLoader:createNode(self.__cname, "window/"..self.__cname)
+    self.root_ = cc.CSLoader:createNode("window/"..self.__cname .."/"..self.__cname ..".csb")
     self:init()
     BaseWindow.load_state_ = WindowDef.LOADED
 end
@@ -44,18 +44,18 @@ function BaseWindow:unload()
     BaseWindow.load_state_ = WindowDef.UNLOAD
 end
 
-function BaseWindow:seekNodeByName(root, name)
-    if root == nil then
+function BaseWindow:seekNodeByName(node, name)
+    if node == nil then
 		return nil
     end
 
-	if root:getName() == name then
-		return root
+	if node:getName() == name then
+		return node
     end
 
 	local nodes = root:getChildren();
-	for node in nodes do
-        local result = self:seekFromRootByName(node, name);
+	for n in nodes do
+        local result = self:seekFromRootByName(n, name);
 		if result ~= nil then
             return result
         end

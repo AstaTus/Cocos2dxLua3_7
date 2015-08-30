@@ -28,9 +28,9 @@ function BaseWindowManager:resetScene(scene_root)
     end
 
     self.scene_root_ = scene_root
-    self.scene_root_.addChild(self.bottom_root_)
-    self.scene_root_.addChild(self.middle_root_)
-    self.scene_root_.addChild(self.top_root_)
+    self.scene_root_:addChild(self.bottom_root_)
+    self.scene_root_:addChild(self.middle_root_)
+    self.scene_root_:addChild(self.top_root_)
 end
 
 
@@ -50,7 +50,7 @@ end
 
 function BaseWindowManager:loadWindows(group, interval_callback, over_callback)
     local windows = WindowDataPool:getSingleton():getGroupWindows(group)
-    for i = 1, i < #windows do
+    for i = 1, #windows do
         local templete = windows[i]
         if self.window_instances_[templete.name_]  == nil then
             if self.window_classes_[templete.name_] ~= nil then
