@@ -1,2 +1,2 @@
-WindowDataPool = require(".window.WindowDataPool")
-WindowTemplete = require(".window.WindowTemplete")
+WindowDataPool = import(".window.WindowDataPool")
+WindowTemplete = import(".window.WindowTemplete")

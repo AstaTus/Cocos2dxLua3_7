@@ -1,4 +1,4 @@
-local DbcData = require(".DbcData")
+local DbcData = import(".DbcData")
 local DbcFile = class("DbcFile")
 
 DbcFile.FORGET = 2

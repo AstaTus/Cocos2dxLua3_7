@@ -1,6 +1,6 @@
-WindowManager = require("WindowManager")
-WindowEnum = require("WindowEnum")
+WindowManager = import(".WindowManager")
+WindowEnum = import(".WindowEnum")
 
 
-local LoginWindow = require("LoginWindow")
+local LoginWindow = import(".LoginWindow")
 WindowManager:getSingleton():registerWindow(WindowEnum.LoginWindow, LoginWindow)

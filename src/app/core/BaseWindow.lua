@@ -1,4 +1,4 @@
-local WindowDef = require(".WindowDef")
+local WindowDef = import(".WindowDef")
 
 local BaseWindow = class("BaseWindow")
 

@@ -1,7 +1,7 @@
-local DbcFile = require(".DbcFile")
-local ConfigEnum = require(".ConfigEnum")
-local WindowTemplete = require(".window.WindowTemplete")
-local WindowDataPool = require(".window.WindowDataPool")
+local DbcFile = import(".DbcFile")
+local ConfigEnum = import(".ConfigEnum")
+local WindowTemplete = import(".window.WindowTemplete")
+local WindowDataPool = import(".window.WindowDataPool")
 
 
 local ConfigManager = class("ConfigManager")
