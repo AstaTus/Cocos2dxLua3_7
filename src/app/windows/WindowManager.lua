@@ -1,5 +1,5 @@
 local BaseWindowDataManager = require("app.core.BaseWindowManager")
-
+local WindowEnum = require(".WindowEnum")
 local WindowManager = class("WindowManager", BaseWindowDataManager)
 
 function WindowManager:getSingleton()
@@ -9,3 +9,5 @@ function WindowManager:getSingleton()
 
     return self.singleton_
 end
+
+return WindowManager

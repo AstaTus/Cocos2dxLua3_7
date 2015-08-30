@@ -1,7 +1,16 @@
---region *.lua
---Date
---此文件由[BabeLua]插件自动生成
+local ConfigManager = require("app.data.ConfigManager")
 
+local LoadingScene = class("LoadingScene", function()
+    return display.newScene("LoadingScene")
+end)
 
+function LoadingScene:ctor()
+end
 
---endregion
+function LoadingScene:onEnter()
+end
+
+function LoadingScene:onExit()
+end
+
+return LoadingScene

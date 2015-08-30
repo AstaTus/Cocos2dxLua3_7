@@ -1,10 +1,15 @@
+local WindowDef = require(".WindowDef")
+
 local BaseWindow = class("BaseWindow")
 
 BaseWindow.root_ = nil
 BaseWindow.sheet_ = nil
+BaseWindow.is_forever_exist_ = false --不会被卸载
+BaseWindow.load_state_ = WindowDef.UNLOAD
 
-function BaseWindow:ctor(sheet, winType, layer)
+function BaseWindow:ctor(sheet, winType, layer, forever)
     self.sheet_ = sheet
+    self.is_forever_exist_ = forever
 end
 
 --在load之后调用
@@ -32,9 +37,11 @@ end
 function BaseWindow:load()
     self.root_ = cc.CSLoader:createNode(self.__cname, "window/"..self.__cname)
     self:init()
+    BaseWindow.load_state_ = WindowDef.LOADED
 end
 
 function BaseWindow:unload()
+    BaseWindow.load_state_ = WindowDef.UNLOAD
 end
 
 function BaseWindow:seekNodeByName(root, name)

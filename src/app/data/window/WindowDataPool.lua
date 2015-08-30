@@ -26,7 +26,7 @@ end
 
 function WindowDataPool:addWindowTemplete(templete)
     self.windows_[templete.id_] = templete
-    
+
     self.groups_[templete.group_] = self.groups_[templete.group_] or {}
     local group = self.groups_[templete.group_]
     group[#group + 1] = templete.name_

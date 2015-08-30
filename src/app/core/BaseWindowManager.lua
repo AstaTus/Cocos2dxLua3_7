@@ -57,25 +57,32 @@ function BaseWindowManager:loadWindows(group, interval_callback, over_callback)
                 self.window_instances_[templete.name_] = self.window_classes_[templete.name_].new()
             else
                 print("BaseWindowManager:loadWindows "..win.name_ .. " is not exist")
-                error()
+                --error()
             end
         end
 
         self.window_instances_[templete.name_]:load()
     end
+
+    self.group_ = group
 end
 
-function BaseWindowManager:unloadWindows(group, interval_callback, over_callback)
-
+function BaseWindowManager:unloadCurrentWindows(interval_callback, over_callback)
+    for i = 1, i < #self.window_instances_ do
+        local win = #self.window_instances_[i]
+        if win.load_state_ == WindowDef.LOADED and win.is_forever_exist_ == false then
+            win.unload()
+        end
+    end
 end
 
 function BaseWindowManager:getCurrentGroup()
     return self.group_
 end
 
-function BaseWindowManager:registerWindow(class_name)
+function BaseWindowManager:registerWindow(class_name, class)
     if self.window_classes_[class_name] == nil then
-        self.window_classes_[class_name] = class_name
+        self.window_classes_[class_name] = class
     end
 end
 
