@@ -1,7 +1,11 @@
---region *.lua
---Date
---此文件由[BabeLua]插件自动生成
+local LandscapeLayerData = class("LandscapeLayerData")
 
+LandscapeLayerData.type_ = 0
+LandscapeLayerData.tmx_path_ = ""
+LandscapeLayerData.pic_paths_ = nil
+ 
+function LandscapeLayerData:ctor()
 
+end
 
---endregion
+return LandscapeLayerData

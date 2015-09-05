@@ -1,4 +1,6 @@
-local Landscape = class("Landscape")
+local Landscape = class("Landscape", function()
+    return display.newLayer()
+end)
 
 Landscape.data_ = nil
 

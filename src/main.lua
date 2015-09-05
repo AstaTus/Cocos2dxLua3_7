@@ -7,6 +7,7 @@ require "config"
 require "cocos.init"
 require "app.windows.init"
 require "app.data.init"
+require "app.structure.init"
 
 local function main()
     require("app.MyApp"):create():run()
