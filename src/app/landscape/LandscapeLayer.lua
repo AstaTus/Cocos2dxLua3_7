@@ -38,6 +38,10 @@ function LandscapeLayer:initPics()
     self.visble_pic_head_ = self.pics_[1]
     self.visble_pic_tail_ = self.pics_[2]
 
+    self.visble_pic_head_:align(display.BOTTOM_LEFT, display.left, display.bottom)
+            :addTo(self, -1)
+    self.visble_pic_tail_:align(display.BOTTOM_LEFT, self.visble_pic_head_:getContentSize().width + display.left, display.bottom)
+            :addTo(self, -1)
 
 end
 
