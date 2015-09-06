@@ -7,4 +7,7 @@ Landscape.data_ = nil
 function Landscape:ctor()
 end
 
+function Landscape:dispose()
+end
+
 return Landscape

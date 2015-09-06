@@ -1,7 +1,7 @@
 local LandscapeManager = class("LandscapeManager")
 
 LandscapeManager.singleton_ = nil
-
+LandscapeManager.currLanscape_ = nil
 
 function LandscapeManager:ctor()
 
@@ -15,4 +15,11 @@ function LandscapeManager:getSingleton()
     return LandscapeManager.singleton_
 end
 
+function LandscapeManager:load()
+
+end
+
+function LandscapeManager:unload()
+
+end
 return LandscapeManager

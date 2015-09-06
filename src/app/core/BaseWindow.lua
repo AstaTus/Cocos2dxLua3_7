@@ -34,8 +34,6 @@ end
 function BaseWindow:update(type, params)
 end
 
-
-
 function BaseWindow:load()
     self.root_ = cc.CSLoader:createNode("window/"..self.__cname .."/"..self.__cname ..".csb")
     self:init()

@@ -1,0 +1,4 @@
+--所有的加载都分布在不同manager
+--ConfigManager
+--LanscapeManager
+--WindowManager
