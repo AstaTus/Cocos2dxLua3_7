@@ -1,6 +1,5 @@
 local WindowDef = require("app.core.WindowDef")
 local BaseWindow = require("app.core.BaseWindow")
-
 local LoginWindow = class("LoginWindow", BaseWindow)
 LoginWindow.login_btn_ = nil
 
@@ -15,6 +14,7 @@ function LoginWindow:init()
     local function loginBtnCallback(sender, eventType)
         if eventType == ccui.TouchEventType.ended then
             --display.showWithScene()
+           
             print("login btn is click")
         end
     end

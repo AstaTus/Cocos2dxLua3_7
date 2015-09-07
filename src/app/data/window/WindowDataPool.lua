@@ -1,11 +1,10 @@
 local WindowDataPool = class("WindowDataPool")
 
 WindowDataPool.singleton_ = nil
-WindowDataPool.groups_ = nil
-WindowDataPool.windows_ = nil
+WindowDataPool.groups_ = {}
+WindowDataPool.windows_ = {}
 function WindowDataPool:ctor()
-    WindowDataPool.groups_ = {}
-    WindowDataPool.windows_ = {}
+    
 end
 
 function WindowDataPool:getSingleton()

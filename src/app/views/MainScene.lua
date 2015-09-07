@@ -1,4 +1,6 @@
 
+local ConfigMgr = require("app.data.ConfigManager")
+
 local MainScene = class("MainScene", cc.load("mvc").ViewBase)
 
 function MainScene:onCreate()
@@ -10,6 +12,9 @@ function MainScene:onCreate()
     WindowManager:getSingleton():resetScene(self)
     WindowManager:getSingleton():loadWindows(1)
     WindowManager:getSingleton():show(WindowEnum.LoginWindow)
+
+    
+    ConfigMgr:getSingleton():loadScheme()
 
 end
 

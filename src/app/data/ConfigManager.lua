@@ -1,19 +1,15 @@
 local DbcFile = import(".DbcFile")
 local ConfigEnum = import(".ConfigEnum")
-local WindowTemplete = import(".window.WindowTemplete")
-local WindowDataPool = import(".window.WindowDataPool")
 
 
 local ConfigManager = class("ConfigManager")
-
-
 
 ConfigManager.singleton_ = nil
 ConfigManager.parse_callbacks_ = nil
 ConfigManager.config_datas_ = nil
 
 function ConfigManager:ctor()
-    self:initParseCallbacks()
+  
 end
 
 function ConfigManager:getSingleton()
@@ -45,8 +41,13 @@ function ConfigManager:parseWindowConfig()
         templete.id_ = file.take(i, 1)
         templete.group_ = file.take(i, 2)
         templete.name_ = file.take(i, 3)
-
     end		
+end
+
+function ConfigManager:loadScheme()
+    --local scheme_zip = cczip.ZipFile:new("./config/scheme.apk", "")
+    --local data = scheme_zip:getFileData("window.txt")
+    print(data)
 end
 
 return ConfigManager
