@@ -45,8 +45,8 @@ function ConfigManager:parseWindowConfig()
 end
 
 function ConfigManager:loadScheme()
-    --local scheme_zip = cczip.ZipFile:new("./config/scheme.apk", "")
-    --local data = scheme_zip:getFileData("window.txt")
+    local scheme_zip = cczip.ZipFile:new("res/config/scheme.pak", "")
+    local data = scheme_zip:getFileData("window.txt")
     print(data)
 end
 
