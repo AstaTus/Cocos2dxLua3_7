@@ -99,6 +99,7 @@ int lua_cocos2dx_zip_ZipFile_getFileData(lua_State* tolua_S)
 		}
 		else
 		{
+			luaL_error(tolua_S, "function 'lua_cocos2dx_zip_ZipFile_getFileData' arg0=%s, buffer=%d, size=%d", arg0.c_str(), buffer, &size);
 			lua_pushnil(tolua_S);
 		}
 
