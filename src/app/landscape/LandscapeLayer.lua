@@ -15,7 +15,6 @@ function LandscapeLayer:ctor(data)
 end
 
 function LandscapeLayer:init()
-    
     if self.data_.type_ == LandscapeDef.TMX_TYPE then
         self:initTmx()
     else

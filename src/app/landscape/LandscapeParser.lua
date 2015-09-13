@@ -9,10 +9,10 @@ function LandscapeParser:ctor()
     
 end
 
-function LandscapeParser:parse(data)
+function LandscapeParser:parse(path)
     local lanscapeData = LanscapeData.new()
     local xml = XMLFile.new()
-    xml:ParseXmlText(data)
+    xml:loadFile(path)
 
     lanscapeData.name_ = xml.lanscape["@name"]
     lanscapeData.width_ = xml.lanscape["@width"]
