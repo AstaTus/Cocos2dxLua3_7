@@ -1,3 +1,6 @@
+---关联所有的配置表
+---类型分两种：1，开始时加载,并且一直存在,scheme配置表
+
 local DbcFile = import(".DbcFile")
 local ConfigEnum = import(".ConfigEnum")
 
@@ -5,8 +8,8 @@ local ConfigEnum = import(".ConfigEnum")
 local ConfigManager = class("ConfigManager")
 
 ConfigManager.singleton_ = nil
-ConfigManager.parse_callbacks_ = nil
-ConfigManager.config_datas_ = nil
+ConfigManager.parse_callbacks_ = {}
+ConfigManager.config_datas_ = {}
 
 function ConfigManager:ctor()
   
@@ -34,20 +37,21 @@ end
 
 function ConfigManager:parseWindowConfig()
     local file = DbcFile.new()
-	file.openFromTxt(self.config_datas_[ConfigEnum.LoginWindow])
+	file:openFromTxt(self.config_datas_[ConfigEnum.WINDOW_CONFIG])
 
     for i = 1, file.records_num_ do
         local templete = WindowTemplete.new()
-        templete.id_ = file.take(i, 1)
-        templete.group_ = file.take(i, 2)
-        templete.name_ = file.take(i, 3)
+        templete.id_ = file:take(i, 1)
+        templete.group_ = file:take(i, 2)
+        templete.name_ = file:take(i, 3)
+        WindowDataPool:getSingleton():addWindowTemplete(templete)
     end		
 end
 
 function ConfigManager:loadScheme()
     local scheme_zip = cczip.ZipFile:new("res/config/scheme.pak", "")
-    local data = scheme_zip:getFileData("window.txt")
-    print(data)
+    self.config_datas_[ConfigEnum.WINDOW_CONFIG] = scheme_zip:getFileData(ConfigEnum.WINDOW_CONFIG)
+   self:parseWindowConfig()
 end
 
 return ConfigManager
