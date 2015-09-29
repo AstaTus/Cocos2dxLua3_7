@@ -19,8 +19,8 @@ function Landscape:init()
     for i, layer_data in ipairs(self.data_.layer_datas_) do
         local layer = LandscapeLayer.new(layer_data)
         layer:init()
-        self:addChild(layer)
 
+        self:addChild(layer)
     end
 end
 

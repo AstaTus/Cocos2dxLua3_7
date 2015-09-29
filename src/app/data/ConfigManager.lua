@@ -1,5 +1,6 @@
 ---关联所有的配置表
----类型分两种：1，开始时加载,并且一直存在,scheme配置表
+---类型分两种：1.开始时加载,并且一直存在,scheme配置表
+             --2.过程中加载,用完之后需要卸载
 
 local DbcFile = import(".DbcFile")
 local ConfigEnum = import(".ConfigEnum")
