@@ -5,6 +5,7 @@ local LoadingScene = class("LoadingScene", function()
 end)
 
 function LoadingScene:ctor()
+
 end
 
 function LoadingScene:onEnter()
