@@ -21,18 +21,16 @@ function SceneSwitcher:registerScene(name, cla)
     else
         error("scene rename!")    
     end
-endX$e#ASZWOQQzswq
+end
 
 function SceneSwitcher:switch(name, args)
     local scene_cla = self.scenes_[name]
     
     if nscene ~= nil then
-        local nscene = scene_cla.new()
+        local nscene = scene_cla.new(args)
         display.runScene(nscene, nil, nil, nil)
     else
-        error("scene not exist!")Z
-
-        \
+        error("scene not exist!")
     end
 end
 
