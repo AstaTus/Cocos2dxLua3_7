@@ -3,7 +3,10 @@ local GameScene = class("GameScene", function()
 end)
 
 
-GameScene.
+function GameScene:initMission()
+
+end
+
 function GameScene:ctor(params)
     super.ctor()
 end
