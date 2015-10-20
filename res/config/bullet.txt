@@ -1,0 +1,2 @@
+INT	STRING	INT	INT	INT	INT	INT
+id	res	damage	srcSpeed	densityÃÜ¶È	restitution·´µ¯	frictionÄ¦²ÁÒòËØ

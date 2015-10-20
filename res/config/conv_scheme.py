@@ -20,6 +20,6 @@ def main():
             fzip.write(f)
     fzip.close()
 
-    shutil.copy(fzip_name, "../output/scheme")
+    #shutil.copy(fzip_name, "../output/scheme")
 if __name__ == '__main__':
     main()
