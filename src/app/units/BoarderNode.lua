@@ -5,16 +5,18 @@ local BoarderNode = class("BoarderNode", function()
 end)
 
 BoarderNode.boarder_ = nil
-
-function BoarderNode:ctor(boarder)
+--1:up 2:down 3:left 4:right
+BoarderNode.side_ = 0
+function BoarderNode:ctor(boarder, side)
     self.super.ctor()
     self.boarder_ = boarder
+    self.side_ = side
     self:initGraphics()
     self:initPhysicsBody()
 end
 
 function BoarderNode:initGraphics()
-    self.physicsSpr_ = display.newSprite(self.boarder_.res_)
+    self.physicsSpr_ = display.newSprite(self.boarder_.res_ .. self.side_)
     if self.physicsSpr_ ~= nil then
         self:addChild(self.physicsSpr_)
     else
@@ -23,9 +25,8 @@ function BoarderNode:initGraphics()
 end
 
 function BoarderNode:initPhysicsBody()
-    
     local material = cc.PhysicsMaterial(self.boarder_.density_, 
-                    self.boarder_.restitution_, self.boarder_.friction_)
+        self.boarder_.restitution_, self.boarder_.friction_)
 
     local body = cc.PhysicsBody:createCircle(self.physicsSpr_:getContentSize().width / 2,
         material)

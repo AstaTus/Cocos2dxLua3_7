@@ -46,7 +46,33 @@ function ConfigManager:parseWindowConfig()
         templete.group_ = file:take(i, 2)
         templete.name_ = file:take(i, 3)
         WindowDataPool:getSingleton():addWindowTemplete(templete)
-    end		
+    end
+end
+
+function ConfigManager:parseMissionConfig()
+    local file = DbcFile.new()
+	file:openFromTxt(self.config_datas_[ConfigEnum.MISSION_CONFIG])
+
+    for i = 1, file.records_num_ do
+        local templete = MissionTemplete.new()
+        templete.chapterId_ = file:take(i, 1)
+        templete.missionId_ = file:take(i, 2)
+        --templete. = file:take(i, 3)
+        --WindowDataPool:getSingleton():addWindowTemplete(templete)
+    end
+end
+
+function ConfigManager:parseIcecubeConfig()
+end
+
+function ConfigManager:parseConditionConfig()
+end
+
+function ConfigManager:parseBulletConfig()
+end
+
+function ConfigManager:parseBoardConfig()
+
 end
 
 function ConfigManager:loadScheme()

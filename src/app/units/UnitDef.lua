@@ -11,4 +11,5 @@ UnitDef.BOARDER_COLLISION_MASK = 0x0001
 UnitDef.BULLET_TAG = 1
 UnitDef.BOARDER_TAG = 2
 UnitDef.ICECUBE_TAG = 3
+
 return UnitDef
