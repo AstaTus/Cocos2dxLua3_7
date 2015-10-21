@@ -5,7 +5,7 @@ MissionTemplete.missionId_ = 0
 MissionTemplete.tileRes_ = 0
 MissionTemplete.bullets_ = nil
 MissionTemplete.conditions_ = nil
---up down left right
+--top bottom left right
 MissionTemplete.boards_ = nil
 
 function MissionTemplete:ctor()

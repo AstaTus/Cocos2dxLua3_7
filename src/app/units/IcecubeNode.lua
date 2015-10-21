@@ -5,30 +5,34 @@ local IcecubeNode = class("IcecubeNode", function()
 end)
 
 IcecubeNode.icecube_ = nil
-IcecubeNode.physics_spr_ = nil
-function IcecubeNode:ctor(icecube)
+
+--包含多层
+IcecubeNode.physicsSprs_ = nil
+function IcecubeNode:ctor(id)
     self.super.ctor()
-    self.icecube_ = icecube
+    self.icecube_ = IcecubeDataPool:getSingleton():getIcecubeTemplete(id)
     self:initGraphics()
     self:initPhysicsBody()
 end
 
 function IcecubeNode:initGraphics()
-    self.physicsSpr_ = display.newSprite(self.icecube_.res_)
-    if self.physicsSpr_ ~= nil then
-        self:addChild(self.physicsSpr_)
-    else
-        error("BulletNode:initGraphics res error")
+    local spr = nil
+    for _, res in ipairs(self.icecube_.stageIconReses_) do
+        spr = display.newSprite(res)
+        if spr ~= nil then
+            self.physicsSprs_[#self.physicsSprs_ + 1] = spr
+            self:addChild(self.spr)
+        else
+            error("BulletNode:initGraphics res error")
+        end
     end
 end
 
 function IcecubeNode:initPhysicsBody()
-    
     local material = cc.PhysicsMaterial(self.icecube_.density_, 
                     self.icecube_.restitution_, self.icecube_.friction_)
 
-    local body = cc.PhysicsBody:createCircle(self.physicsSpr_:getContentSize().width / 2,
-        material)
+    local body = cc.PhysicsBody:createBox(self.physicsSprs_[1]:getContentSize(), material)
     body:setRotationEnable(false)
 
     body:setCategoryBitmask(UnitDef.BULLET_CATEGORY_MASK)
@@ -39,5 +43,19 @@ function IcecubeNode:initPhysicsBody()
     self:setPhysicsBody(body)
     self:getPhysicsBody():setGravityEnable(false)
 end
+
+function IcecubeNode:damage()
+    self.physicsSprs_[#self.physicsSprs_]:removeSelf();
+    if #self.physicsSprs_ == 0 then
+        self:die()
+    end
+end
+
+function IcecubeNode:die()
+    --播放死亡动画
+    self:removeSelf()
+end
+
+
 
 return IcecubeNode
