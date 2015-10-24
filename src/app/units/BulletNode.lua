@@ -24,7 +24,6 @@ function BulletNode:initGraphics()
 end
 
 function BulletNode:initPhysicsBody()
-    
     local material = cc.PhysicsMaterial(self.bullet_.density_, 
                     self.bullet_.restitution_, self.bullet_.friction_)
 

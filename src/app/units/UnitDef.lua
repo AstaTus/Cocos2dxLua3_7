@@ -22,4 +22,7 @@ UnitDef.BOARDER_BOTTOM = 2
 UnitDef.BOARDER_LEFT = 3
 UnitDef.BOARDER_RIGHT = 4
 
+UnitDef.STATION_READY = 1
+UnitDef.STATION_SHOOT = 2
+
 return UnitDef
