@@ -4,7 +4,11 @@ end)
 
 GameScene.mission_ = nil
 GameScene.map_ = nil
-GameScene.gameNode_ = nil
+GameScene.cubeCount_ = 0
+GameScene.currentBullet_ = nil
+GameScene.state_ = SceneDef.GAME_STATE_MISSION_START
+GameScene.stationNode_ = nil
+
 local SceneDef = import(".SceneDef")
 local UnitDef = require "app.units.SceneDef"
 
@@ -19,8 +23,6 @@ end
 function GameScene:ctor(params)
     self.super.ctor()
 
-    self.gameNode_ = display.newNode()
-    self.gameNode_:setPosition()
     local mission_id = params[1]
     self.mission_ = MissionDataPool:getSingleton():getMissionTemplete(mission_id)
 
@@ -33,6 +35,23 @@ function GameScene:initMap()
    self.map_:setPosition(SceneDef.GAME_AREA_X, SceneDef.GAME_AREA_Y)
    self:initBoard()
    self:initIcecube()
+   self:initStation()
+end
+
+function GameScene:initStation()
+    self.stationNode_ = StationNode.new()
+    self.stationNode_:addTo(self.map_)
+    self.stationNode_:setPosition(SceneDef.STATION_X, SceneDef.STATION_Y)
+
+    --[[local  listenner = cc.EventListenerTouchOneByOne:create()
+    listenner:setSwallowTouches(true)
+    listenner:registerScriptHandler(self.onShootTouchBegain, cc.Handler.EVENT_TOUCH_BEGAN )
+
+    listenner:registerScriptHandler(self.onShootTouchMoved, cc.Handler.EVENT_TOUCH_MOVED )
+    listenner:registerScriptHandler(self.onShootTouchEnd, cc.Handler.EVENT_TOUCH_ENDED )
+    local eventDispatcher = self:getEventDispatcher()
+    eventDispatcher:addEventListenerWithSceneGraphPriority(listenner, self)]]--
+
 end
 
 function GameScene:initBoard()
@@ -44,7 +63,7 @@ end
 
 function GameScene:initIcecube()
     local ices = self.map_:getObjectGroup("icecube"):getObjects()
-  
+    self.cubeCount_ = #ices
     for _, ice in ipairs(ices) do
         local x = ice["x"]
         local y = ice["y"]
@@ -66,11 +85,17 @@ end
 
 local function GameScene:contactLogic(node)
     if node:getTag() == UnitDef.ICECUBE_TAG then
-        node:damage()
+        if node:damage() == true then
+            self.cubeCount_ = self.cubeCount_ - 1
+        end
     elseif node:getTag() == UnitDef.BOARDER_TAG then
         
     elseif node:getTag() == UnitDef.BULLET_TAG then
         
+    end
+
+    if self.cubeCount_ == 0 then
+        --胜利
     end
 end
 
@@ -103,7 +128,40 @@ local function GameScene:onContactSeperate(contact)
     end]]--
 end
 
+function GameScene:initTouch()
+    
+
+end
+
+function GameScene:onShootTouchBegain(touch, event)
+    if (self._state ~= kPaddleStateUngrabbed) then 
+        return false
+    end
+
+    if not self:containsTouchLocation(touch:getLocation().x, touch:getLocation().y) then
+        return false
+    end
+
+    return true
+end
+
+function GameScene:onShootTouchMoved(touch, event)
+
+end
+
+function GameScene:onShootTouchEnd(touch, event)
+end
+
+
+
 function GameScene:onEnter()
+
+--初始化
+
+
+
+--显示关卡提示 不用window
+
 
 end
 
