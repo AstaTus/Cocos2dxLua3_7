@@ -26,7 +26,7 @@ end
 function SceneSwitcher:switch(name, args)
     local scene_cla = self.scenes_[name]
     
-    if nscene ~= nil then
+    if scene_cla ~= nil then
         local nscene = scene_cla.new(args)
         display.runScene(nscene, nil, nil, nil)
     else

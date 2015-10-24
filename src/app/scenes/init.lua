@@ -1,4 +1,5 @@
 SceneSwitcher = import(".SceneSwitcher")
 SceneEnum = import(".SceneEnum")
 
-SceneSwitcher.getSingleton().registerScene(SceneEnum.GameScene)
+local GameScene = import(".GameScene")
+SceneSwitcher:getSingleton():registerScene(SceneEnum.GameScene, GameScene)

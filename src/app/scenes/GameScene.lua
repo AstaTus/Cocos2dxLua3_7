@@ -2,6 +2,9 @@ local GameScene = class("GameScene", function()
     return display.newScene("GameScene")
 end)
 
+local SceneDef = import(".SceneDef")
+local UnitDef = import("app.units.UnitDef")
+
 GameScene.mission_ = nil
 GameScene.map_ = nil
 GameScene.cubeCount_ = 0
@@ -9,8 +12,7 @@ GameScene.currentBullet_ = nil
 GameScene.state_ = SceneDef.GAME_STATE_MISSION_START
 GameScene.stationNode_ = nil
 
-local SceneDef = import(".SceneDef")
-local UnitDef = require "app.units.SceneDef"
+
 
 function GameScene:initMission()
 
@@ -21,7 +23,7 @@ function GameScene:onCleanup()
 end
 
 function GameScene:ctor(params)
-    self.super.ctor()
+    --self.super.ctor()
 
     local mission_id = params[1]
     self.mission_ = MissionDataPool:getSingleton():getMissionTemplete(mission_id)
@@ -83,7 +85,7 @@ function GameScene:initCollision()
     eventDispatcher:addEventListenerWithFixedPriority(contactListener, 1)
 end
 
-local function GameScene:contactLogic(node)
+function GameScene:contactLogic(node)
     if node:getTag() == UnitDef.ICECUBE_TAG then
         if node:damage() == true then
             self.cubeCount_ = self.cubeCount_ - 1
@@ -99,7 +101,7 @@ local function GameScene:contactLogic(node)
     end
 end
 
-local function GameScene:onContactBegin(contact)
+function GameScene:onContactBegin(contact)
     --local a = contact:getShapeA():getBody():getNode()
     --local b = contact:getShapeB():getBody():getNode()
 
@@ -109,7 +111,7 @@ local function GameScene:onContactBegin(contact)
     return true
 end
 
-local function GameScene:onContactSeperate(contact)
+function GameScene:onContactSeperate(contact)
     local a = contact:getShapeA():getBody():getNode()
     local b = contact:getShapeB():getBody():getNode()
 
