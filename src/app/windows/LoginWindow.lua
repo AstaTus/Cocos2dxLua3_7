@@ -14,7 +14,7 @@ function LoginWindow:init()
     local function loginBtnCallback(sender, eventType)
         if eventType == ccui.TouchEventType.ended then
             --display.showWithScene()
-           
+           SceneSwitcher:getSingleton():switch(SceneEnum.GameScene, nil)
             print("login btn is click")
         end
     end
