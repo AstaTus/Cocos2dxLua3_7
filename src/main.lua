@@ -8,7 +8,7 @@ require "cocos.init"
 require "app.windows.init"
 require "app.data.init"
 require "app.structure.init"
-
+require "app.scenes.init"
 local function main()
     require("app.MyApp"):create():run()
 end

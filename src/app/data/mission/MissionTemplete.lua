@@ -3,10 +3,10 @@ local MissionTemplete = class("MissionTemplete")
 MissionTemplete.chapterId_ = 0
 MissionTemplete.missionId_ = 0
 MissionTemplete.tileRes_ = 0
-MissionTemplete.bullets_ = nil
-MissionTemplete.conditions_ = nil
+MissionTemplete.bullets_ = {}
+MissionTemplete.conditions_ = {}
 --top bottom left right
-MissionTemplete.boards_ = nil
+MissionTemplete.boarders_ = {}
 
 function MissionTemplete:ctor()
 

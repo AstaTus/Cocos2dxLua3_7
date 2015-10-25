@@ -13,4 +13,10 @@ SceneDef.GAME_STATE_MISSION_END = 4     --½áÊø
 
 SceneDef.STATION_X = 218
 SceneDef.STATION_Y = 820
+
+SceneDef.MAX_BULLET = 10
+
+SceneDef.MAX_CONDITION = 2
+
+SceneDef.BOARDER_COUNT = 4
 return SceneDef

@@ -16,8 +16,8 @@ function BulletDataPool:addBulletTemplete(templete)
 
 end
 
-function BulletDataPool:getBulletTemplete(templete)
-    return self.bullets_[templete.id_]
+function BulletDataPool:getBulletTemplete(id)
+    return self.bullets_[id]
 end
 
 return BulletDataPool

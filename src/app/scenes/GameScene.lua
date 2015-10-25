@@ -25,13 +25,15 @@ end
 function GameScene:ctor(params)
     --self.super.ctor()
 
-    local mission_id = params[1]
-    self.mission_ = MissionDataPool:getSingleton():getMissionTemplete(mission_id)
-
+    --local mission_id = params[1]
+    --self.mission_ = MissionDataPool:getSingleton():getMissionTemplete(mission_id)
+    self:initMap()
 end
 
 function GameScene:initMap()
-    self.map_ = cc.TMXTiledMap:create(SceneDef.LANSCAPE_RES_PATH .. self.mission_.tileRes_)
+    --self.map_ = cc.TMXTiledMap:create(SceneDef.LANSCAPE_RES_PATH .. self.mission_.tileRes_)
+	--	:addTo(self, -1)
+    self.map_ = cc.TMXTiledMap:create(SceneDef.LANSCAPE_RES_PATH .. "lanscape0_0/lanscape0_0.tmx")
 		:addTo(self, -1)
 
    self.map_:setPosition(SceneDef.GAME_AREA_X, SceneDef.GAME_AREA_Y)
