@@ -1,2 +1,3 @@
 INT	INT	STRING	INT	INT	INT	INT	INT	INT	INT	INT	INT	INT	INT	INT	INT	INT	INT	INT
 chapterID	missionID	mapres	bullet0	bullet1	bullet2	bullet3	bullet4	bullet5	bullet6	bullet7	bullet8	bullet9	condition0	condition1	board-up	board-down	board-left	board-right
+1	1	lanscape0_0/lanscape0_0.tmx	1	1	1	1	1	1	1	1	1	1			1	1	1	1

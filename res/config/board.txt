@@ -1,0 +1,3 @@
+INT	INT	INT	INT
+id	densityÃÜ¶È	restitution·´µ¯	frictionÄ¦²ÁÒòËØ
+1	1	1	1
